@@ -1,0 +1,12 @@
+.resizable {
+  resize: both;
+  overflow: auto;
+
+  background-color: red;
+  box-shadow: 1px;
+
+  position: absolute;
+
+  width: 150px;
+  height: 300px;
+}
