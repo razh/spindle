@@ -36,15 +36,18 @@ app.directive( 'draggable', function( $document ) {
     };
   })
   .directive( 'resizable', function() {
+    var touchSupport = 'ontouchstart' in window;
+
     return function( scope, element, attrs ) {
       var width = scope.passage.width || 120;
 
       element.css({
         width: width + 'px'
       });
+
       element.attr( 'width', width );
 
-      element.bind( 'mousedown' , function( event ) {
+      element.bind( 'mousedown' , function() {
         element.bind( 'mousemove', mousemove );
         element.bind( 'mouseup', mouseup );
       });
@@ -85,6 +88,10 @@ app.directive( 'draggable', function( $document ) {
         // Update on change.
         element.bind( 'blur keyup change', function() {
           scope.$apply( read );
+        });
+
+        element.bind( 'blur', function() {
+          element.attr( 'contenteditable', 'false' );
         });
 
         // Initialize element to current value.

@@ -6,6 +6,13 @@ $width: 120px;
 
 $text-color: #2c3e50;
 
+@mixin user-select($selection) {
+  -webkit-user-select: $selection;
+     -moz-user-select: $selection;
+      -ms-user-select: $selection;
+          user-select: $selection;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -63,13 +70,20 @@ hr {
 
   width: $width;
 
-  -webkit-user-select: text;
-     -moz-user-select: text;
-      -ms-user-select: text;
-          user-select: text;
+  @include user-select(none);
 }
 
 .passage-title {
   color: rgba( 200, 67, 57, 1.0 );
   margin-bottom: $radius;
+
+  @include user-select(text);
+
+  &:focus {}
+}
+
+.passage-text {
+  @include user-select(text);
+
+  &:focus {}
 }
