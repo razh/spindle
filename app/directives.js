@@ -1,10 +1,14 @@
-angular.module( 'drag', [] )
- .directive( 'draggable', function( $document ) {
-    return function( scope, element, attr ) {
-        var startX = 0,
-            startY = 0,
-            x = 0,
-            y = 0;
+app.directive( 'draggable', function( $document ) {
+    return function( scope, element, attrs ) {
+        var startX = attrs.x || 0,
+            startY = attrs.y || 0,
+            x = startX,
+            y = startY;
+
+        element.css({
+          top:  startY + 'px',
+          left: startX + 'px'
+        });
 
         element.bind( 'mousedown', function( event ) {
           startX = event.screenX - x;
@@ -20,6 +24,9 @@ angular.module( 'drag', [] )
             top:  y + 'px',
             left: x + 'px'
           });
+
+          element.attr( 'x', x );
+          element.attr( 'y', y );
         }
 
         function mouseup() {

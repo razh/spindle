@@ -5,6 +5,8 @@ $shadow-blur: $radius;
 $width: 120px;
 $height: 240px;
 
+$text-color: #2c3e50;
+
 body {
   margin: 0;
   padding: 0;
@@ -16,6 +18,8 @@ body {
 
   font-weight: bold;
   font-family: Helvetica;
+
+  color: $text-color;
   background-color: #3498db;
 }
 
@@ -23,7 +27,6 @@ footer {
   font-size: 24pt;
   text-align: center;
 
-  color: gray;
   background: linear-gradient( rgba( 230, 230, 230, 1.0 ), white 40% );
   position: absolute;
 
@@ -38,19 +41,16 @@ footer {
   box-shadow: 0 -5px 10px rgba( 0, 0, 0, 0.25 );
 }
 
-.container {
-  height: 90%;
-}
-
 .resizable {
   resize: both;
   overflow: auto;
+}
 
+.passage {
   padding: 2 * $radius;
 
   border-radius: $radius;
 
-  color: #2c3e50;
   background-color: #ecf0f1;
   box-shadow: 0 $shadow $shadow-blur rgba( 0, 0, 0, 0.25 );
 
@@ -58,4 +58,14 @@ footer {
 
   width: $width;
   height: $height;
+
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
+}
+
+.passage-title {
+  color: rgba( 200, 67, 57, 1.0 );
+  margin-bottom: $radius;
 }

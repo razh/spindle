@@ -7,12 +7,12 @@ body {
   box-sizing: border-box;
   font-weight: bold;
   font-family: Helvetica;
+  color: #2c3e50;
   background-color: #3498db; }
 
 footer {
   font-size: 24pt;
   text-align: center;
-  color: gray;
   background: linear-gradient(#e6e6e6, white 40%);
   position: absolute;
   padding-top: 20px;
@@ -21,17 +21,23 @@ footer {
   bottom: 0;
   box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.25); }
 
-.container {
-  height: 90%; }
-
 .resizable {
   resize: both;
-  overflow: auto;
+  overflow: auto; }
+
+.passage {
   padding: 20px;
   border-radius: 10px;
-  color: #2c3e50;
   background-color: #ecf0f1;
   box-shadow: 0 2.5px 10px rgba(0, 0, 0, 0.25);
   position: absolute;
   width: 120px;
-  height: 240px; }
+  height: 240px;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text; }
+
+.passage-title {
+  color: #c84339;
+  margin-bottom: 10px; }

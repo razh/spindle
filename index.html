@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="drag">
+<html lang="en" ng-app="spindle">
   <head>
     <title>Spindle</title>
     <meta charset='utf-8'>
@@ -7,13 +7,19 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <div class="container">
-      <div draggable class="resizable">
-        <div editable>hello this is a test</div>
-        <div editable>maximum horoscopes decide contemporary conundrums</div>
+    <div class="container" controller="SpindleCtrl">
+      <div draggable class="resizable passage" x=400 y=200>
+        <div editable class="passage-title" ng-model="passage.title">hello this is a test</div>
+        <div editable class="passage-text" ng-model="passage.text">maximum horoscopes decide contemporary conundrums</div>
       </div>
-      <div draggable class="resizable">hello this is a second test</div>
-      <div draggable class="resizable">and here is a third test</div>
+      <div draggable class="resizable passage" x=200 y=150>
+        <div editable class="passage-title" ng-model="passage.title">hello this is a second test</div>
+        <div editable class="passage-text" ng-model="passage.text">How will this work?</div>
+      </div>
+      <div draggable class="resizable passage" x=30 y=50>
+        <div editable class="passage-title" ng-model="passage.title">and here is a third test</div>
+        <div editable class="passage-text" ng-model="passage.text">oh come on, we can think of better text than this.</div>
+      </div>
     </div>
 
     <footer>Spindle</footer>
