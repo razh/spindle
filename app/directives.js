@@ -13,8 +13,8 @@ app.directive( 'draggable', function( $document ) {
         element.bind( 'mousedown', function( event ) {
           startX = event.screenX - x;
           startY = event.screenY - y;
-          element.bind( 'mousemove', mousemove );
-          element.bind( 'mouseup', mouseup );
+          $document.bind( 'mousemove', mousemove );
+          $document.bind( 'mouseup', mouseup );
         });
 
         function mousemove( event ) {
@@ -30,8 +30,8 @@ app.directive( 'draggable', function( $document ) {
         }
 
         function mouseup() {
-          element.unbind( 'mousemove', mousemove );
-          element.unbind( 'mouseup', mouseup );
+          $document.unbind( 'mousemove', mousemove );
+          $document.unbind( 'mouseup', mouseup );
         }
     };
   })
