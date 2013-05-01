@@ -1,12 +1,16 @@
+body {
+  font-weight: bold;
+  font-family: Helvetica;
+  background-color: #3498db; }
+
 .resizable {
   resize: both;
   overflow: auto;
-
-  background-color: red;
-  box-shadow: 1px;
-
+  padding: 20px;
+  border-radius: 10px;
+  color: #2c3e50;
+  background-color: #ecf0f1;
+  box-shadow: 0 2.5px 10px rgba(0, 0, 0, 0.25);
   position: absolute;
-
-  width: 150px;
-  height: 300px;
-}
+  min-width: 120px;
+  min-height: 240px; }

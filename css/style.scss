@@ -1,0 +1,30 @@
+$radius: 10px;
+$shadow: 0.25 * $radius;
+$shadow-blur: $radius;
+
+$width: 120px;
+$height: 240px;
+
+body {
+  font-weight: bold;
+  font-family: Helvetica;
+  background-color: #3498db;
+}
+
+.resizable {
+  resize: both;
+  overflow: auto;
+
+  padding: 2 * $radius;
+
+  border-radius: $radius;
+
+  color: #2c3e50;
+  background-color: #ecf0f1;
+  box-shadow: 0 $shadow $shadow-blur rgba( 0, 0, 0, 0.25 );
+
+  position: absolute;
+
+  min-width: $width;
+  min-height: $height;
+}
