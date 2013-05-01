@@ -7,18 +7,12 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <div class="container" controller="SpindleCtrl">
-      <div draggable class="resizable passage" x=400 y=200>
-        <div editable class="passage-title" ng-model="passage.title">hello this is a test</div>
-        <div editable class="passage-text" ng-model="passage.text">maximum horoscopes decide contemporary conundrums</div>
-      </div>
-      <div draggable class="resizable passage" x=200 y=150>
-        <div editable class="passage-title" ng-model="passage.title">hello this is a second test</div>
-        <div editable class="passage-text" ng-model="passage.text">How will this work?</div>
-      </div>
-      <div draggable class="resizable passage" x=30 y=50>
-        <div editable class="passage-title" ng-model="passage.title">and here is a third test</div>
-        <div editable class="passage-text" ng-model="passage.text">oh come on, we can think of better text than this.</div>
+    <div class="container" ng-controller="SpindleCtrl">
+      <div ng-repeat="passage in passages">
+        <div draggable class="resizable passage" x={{passage.x}} y={{passage.y}}>
+          <div editable class="passage-title" ng-model="passage.title"></div>
+          <div editable class="passage-text" ng-model="passage.text"></div>
+        </div>
       </div>
     </div>
 
