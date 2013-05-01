@@ -5,6 +5,7 @@ $shadow-blur: $radius;
 $width: 120px;
 
 $text-color: #2c3e50;
+$passage-color: #ecf0f1;
 
 @mixin user-select($selection) {
   -webkit-user-select: $selection;
@@ -33,15 +34,21 @@ footer {
   font-size: 24pt;
   text-align: center;
 
-  background: linear-gradient( rgba( 230, 230, 230, 1.0 ), white 40% );
+  background-color: $passage-color;
   position: absolute;
 
   padding: {
-    top: 2 * $radius;
-    bottom: 2 * $radius;
+    top: $radius;
+    bottom: $radius;
   }
 
-  width: 100%;
+  left: 50%;
+  width: 200px;
+  margin-left: -100px;
+
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+
   bottom: 0;
 
   box-shadow: 0 -5px 10px rgba( 0, 0, 0, 0.25 );
@@ -63,7 +70,7 @@ hr {
 
   border-radius: $radius;
 
-  background-color: #ecf0f1;
+  background-color: $passage-color;
   box-shadow: 0 $shadow $shadow-blur rgba( 0, 0, 0, 0.25 );
 
   position: absolute;
