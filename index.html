@@ -9,14 +9,17 @@
   <body>
     <div class="container" ng-controller="SpindleCtrl">
       <div ng-repeat="passage in passages">
-        <div draggable class="resizable passage" x={{passage.x}} y={{passage.y}}>
+        <div resizable draggable class="resizable passage" x={{passage.x}} y={{passage.y}} width={{passage.width}}>
           <div editable class="passage-title" ng-model="passage.title"></div>
+          <hr>
           <div editable class="passage-text" ng-model="passage.text"></div>
         </div>
       </div>
     </div>
 
-    <footer>Spindle</footer>
+    <footer>
+      <div class="footer-hero">Spindle</div>
+    </footer>
 
     <script src="app/lib/angular/angular.min.js"></script>
     <script src="app/main.js"></script>

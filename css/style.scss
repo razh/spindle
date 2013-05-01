@@ -3,7 +3,6 @@ $shadow: 0.25 * $radius;
 $shadow-blur: $radius;
 
 $width: 120px;
-$height: 240px;
 
 $text-color: #2c3e50;
 
@@ -41,6 +40,12 @@ footer {
   box-shadow: 0 -5px 10px rgba( 0, 0, 0, 0.25 );
 }
 
+hr {
+  margin: 20px 0;
+  border: 0;
+  border-bottom: 1px solid rgba( 0, 0, 0, 0.1 );
+}
+
 .resizable {
   resize: both;
   overflow: auto;
@@ -57,7 +62,6 @@ footer {
   position: absolute;
 
   width: $width;
-  height: $height;
 
   -webkit-user-select: text;
      -moz-user-select: text;

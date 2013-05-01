@@ -13,8 +13,8 @@ app.directive( 'draggable', function( $document ) {
         element.bind( 'mousedown', function( event ) {
           startX = event.screenX - x;
           startY = event.screenY - y;
-          $document.bind( 'mousemove', mousemove );
-          $document.bind( 'mouseup', mouseup );
+          element.bind( 'mousemove', mousemove );
+          element.bind( 'mouseup', mouseup );
         });
 
         function mousemove( event ) {
@@ -30,9 +30,36 @@ app.directive( 'draggable', function( $document ) {
         }
 
         function mouseup() {
-          $document.unbind( 'mousemove', mousemove );
-          $document.unbind( 'mouseup', mouseup );
+          element.unbind( 'mousemove', mousemove );
+          element.unbind( 'mouseup', mouseup );
         }
+    };
+  })
+  .directive( 'resizable', function() {
+    return function( scope, element, attrs ) {
+      var width = scope.passage.width || 120;
+
+      element.css({
+        width: width + 'px'
+      });
+      element.attr( 'width', width );
+
+      element.bind( 'mousedown' , function( event ) {
+        element.bind( 'mousemove', mousemove );
+        element.bind( 'mouseup', mouseup );
+      });
+
+      function mousemove( event ) {
+        // Remove 'px' from end of width.
+        var widthString = element.css( 'width' );
+        width = widthString.substring( 0, widthString.length - 2 );
+        element.attr( 'width', width );
+      }
+
+      function mouseup( event ) {
+        element.unbind( 'mousemove', mousemove );
+        element.unbind( 'mouseup', mouseup );
+      }
     };
   })
   .directive( 'editable', function() {
@@ -40,8 +67,12 @@ app.directive( 'draggable', function( $document ) {
       require: '?ngModel',
 
       link: function( scope, element, attrs, ngModel ) {
-        element.bind( 'click', function() {
+        element.bind( 'click', function( event ) {
           element.attr( 'contenteditable', 'true' );
+        });
+
+        element.bind( 'mousedown', function( event ) {
+          event.stopPropagation();
         });
 
         // Do nothing if no ng-model exists.
@@ -63,5 +94,46 @@ app.directive( 'draggable', function( $document ) {
           ngModel.$setViewValue( element.html() );
         }
       }
+    };
+  })
+  .directive( 'fullscreen', function() {
+    return function( scope, element, attrs ) {
+
+      var x = element.attr( 'x' ),
+          y = element.attr( 'y' ),
+          width = element.attr( 'width' );
+
+      function toFullscreen() {
+        element.unbind( 'dblclick', toFullscreen );
+
+        x = element.attr( 'x' );
+        y = element.attr( 'y' );
+        width = element.attr( 'width' );
+
+        element.css({
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%'
+        });
+
+        element.bind( 'dblclick', toWindowed );
+      }
+
+      function toWindowed() {
+        element.unbind( 'dblclick', toWindowed );
+
+        element.css({
+          top: y + 'px',
+          left: x + 'px',
+          width: width + 'px',
+          height: 'auto'
+        });
+
+        element.bind( 'dblclick', toFullscreen );
+        console.log( x + ', ' + y + ', ' + width );
+      }
+
+      element.bind( 'dblclick', toFullscreen );
     };
   });

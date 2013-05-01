@@ -3,6 +3,7 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
     {
       x: 400,
       y: 200,
+      width: 200,
       title:  'hello this is a title',
       text: 'maximum horoscopes decide contemporary conundrums'
     },
@@ -10,11 +11,12 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
       x: 200,
       y: 150,
       title: 'hello this is a second test',
-      text: 'how will this work?'
+      text: 'how will this work? [[displayed text|and here is a third test]]'
     },
     {
       x: 30,
       y: 50,
+      width: 150,
       title: 'and here is a third test',
       text: 'oh come on, we can think of better text than this'
     }

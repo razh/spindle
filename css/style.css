@@ -21,6 +21,11 @@ footer {
   bottom: 0;
   box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.25); }
 
+hr {
+  margin: 20px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
 .resizable {
   resize: both;
   overflow: auto; }
@@ -32,7 +37,6 @@ footer {
   box-shadow: 0 2.5px 10px rgba(0, 0, 0, 0.25);
   position: absolute;
   width: 120px;
-  height: 240px;
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
