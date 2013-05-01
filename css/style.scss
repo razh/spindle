@@ -6,9 +6,40 @@ $width: 120px;
 $height: 240px;
 
 body {
+  margin: 0;
+  padding: 0;
+
+  -webkit-box-sizing: border-box;
+   -khtml-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+
   font-weight: bold;
   font-family: Helvetica;
   background-color: #3498db;
+}
+
+footer {
+  font-size: 24pt;
+  text-align: center;
+
+  color: gray;
+  background: linear-gradient( rgba( 230, 230, 230, 1.0 ), white 40% );
+  position: absolute;
+
+  padding: {
+    top: 2 * $radius;
+    bottom: 2 * $radius;
+  }
+
+  width: 100%;
+  bottom: 0;
+
+  box-shadow: 0 -5px 10px rgba( 0, 0, 0, 0.25 );
+}
+
+.container {
+  height: 90%;
 }
 
 .resizable {
@@ -25,6 +56,6 @@ body {
 
   position: absolute;
 
-  min-width: $width;
-  min-height: $height;
+  width: $width;
+  height: $height;
 }
