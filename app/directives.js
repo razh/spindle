@@ -1,45 +1,45 @@
 app.directive( 'draggable', function( $document ) {
     return function( scope, element, attrs ) {
-        var startX = scope.passage.x || 0,
-            startY = scope.passage.y || 0,
-            x = startX,
-            y = startY;
+      var startX = scope.passage.x || 0,
+          startY = scope.passage.y || 0,
+          x = startX,
+          y = startY;
 
+      element.css({
+        top:  startY + 'px',
+        left: startX + 'px'
+      });
+
+      element.bind( 'mousedown', function( event ) {
+        startX = event.screenX - x;
+        startY = event.screenY - y;
+        $document.bind( 'mousemove', mousemove );
+        $document.bind( 'mouseup', mouseup );
+      });
+
+      function mousemove( event ) {
+        y = event.screenY - startY;
+        x = event.screenX - startX;
         element.css({
-          top:  startY + 'px',
-          left: startX + 'px'
+          top:  y + 'px',
+          left: x + 'px'
         });
 
-        element.bind( 'mousedown', function( event ) {
-          startX = event.screenX - x;
-          startY = event.screenY - y;
-          $document.bind( 'mousemove', mousemove );
-          $document.bind( 'mouseup', mouseup );
-        });
+        element.attr( 'x', x );
+        element.attr( 'y', y );
+      }
 
-        function mousemove( event ) {
-          y = event.screenY - startY;
-          x = event.screenX - startX;
-          element.css({
-            top:  y + 'px',
-            left: x + 'px'
-          });
-
-          element.attr( 'x', x );
-          element.attr( 'y', y );
-        }
-
-        function mouseup() {
-          $document.unbind( 'mousemove', mousemove );
-          $document.unbind( 'mouseup', mouseup );
-        }
+      function mouseup() {
+        $document.unbind( 'mousemove', mousemove );
+        $document.unbind( 'mouseup', mouseup );
+      }
     };
   })
   .directive( 'resizable', function() {
-    var touchSupport = 'ontouchstart' in window;
+    var defaultWidth = 120;
 
     return function( scope, element, attrs ) {
-      var width = scope.passage.width || 120;
+      var width = scope.passage.width || defaultWidth;
 
       element.css({
         width: width + 'px'

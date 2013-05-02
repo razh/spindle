@@ -6,7 +6,7 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-weight: bold;
-  font-family: Helvetica;
+  font-family: Helvetica, sans-serif;
   color: #2c3e50;
   background-color: #3498db; }
 
