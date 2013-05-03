@@ -107,29 +107,20 @@ hr {
 
   resize: none;
   border: 0;
-
-  top: $spacing;
-  left: $spacing;
-  bottom: $spacing;
-  right: $spacing;
 }
 
 .passage-title-view {
-  margin-bottom: $radius;
-
   @include user-select(text);
   @include text-view($title-color, $passage-color);
-
-  &:focus {}
 }
 
 .passage-text-view {
   @include user-select(text);
   @include text-view($text-color, $passage-color);
-
-  &:focus {}
 }
 
-textarea { background-color: red; }
+.passage-title-edit {
+
+}
 
 .selected {}

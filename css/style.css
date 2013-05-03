@@ -51,7 +51,6 @@ hr {
   user-select: none; }
 
 .passage-title-view {
-  margin-bottom: 10px;
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
@@ -62,11 +61,7 @@ hr {
   color: #c84339;
   background-color: #ecf0f1;
   resize: none;
-  border: 0;
-  top: 20px;
-  left: 20px;
-  bottom: 20px;
-  right: 20px; }
+  border: 0; }
 
 .passage-text-view {
   -webkit-user-select: text;
@@ -79,11 +74,4 @@ hr {
   color: #2c3e50;
   background-color: #ecf0f1;
   resize: none;
-  border: 0;
-  top: 20px;
-  left: 20px;
-  bottom: 20px;
-  right: 20px; }
-
-textarea {
-  background-color: red; }
+  border: 0; }

@@ -74,7 +74,11 @@ app.directive( 'draggable', function( $document ) {
       require: '?ngModel',
 
       link: function( scope, element, attrs, ngModel ) {
-        element.bind( 'click', function( event ) {});
+        element.bind( 'click', function( event ) {
+          element.attr( 'contenteditable', 'true' );
+          console.log( element.val() );
+          console.log( converter.makeHtml( element.val() ) );
+        });
 
         element.bind( 'mousedown', function( event ) {
           event.stopPropagation();
@@ -93,7 +97,7 @@ app.directive( 'draggable', function( $document ) {
         });
 
         element.bind( 'blur', function() {
-          // element.attr( 'contenteditable', 'false' );
+          element.attr( 'contenteditable', 'false' );
         });
 
         // Initialize element to current value.
