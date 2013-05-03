@@ -12,7 +12,7 @@
         <div resizable draggable class="resizable passage" x={{passage.x}} y={{passage.y}} width={{passage.width}}>
           <div editable class="passage-title" ng-model="passage.title"></div>
           <hr>
-          <div editable class="passage-text" ng-model="passage.text"></div>
+          <textarea rows="5" editable class="passage-text" ng-model="passage.text"></textarea>
         </div>
       </div>
     </div>
@@ -22,6 +22,9 @@
     </footer>
 
     <script src="app/lib/angular/angular.min.js"></script>
+    <script src="app/lib/pagedown/Markdown.Converter.js"></script>
+    <script src="app/lib/pagedown/Markdown.Editor.js"></script>
+    <script src="app/lib/pagedown/Markdown.Sanitizer.js"></script>
     <script src="app/main.js"></script>
     <script src="app/controllers.js"></script>
     <script src="app/directives.js"></script>

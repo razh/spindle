@@ -11,6 +11,7 @@ app.directive( 'draggable', function( $document ) {
       });
 
       element.bind( 'mousedown', function( event ) {
+        element.addClass( 'selected' );
         startX = event.screenX - x;
         startY = event.screenY - y;
         $document.bind( 'mousemove', mousemove );
@@ -30,6 +31,7 @@ app.directive( 'draggable', function( $document ) {
       }
 
       function mouseup() {
+        element.removeClass( 'selected' );
         $document.unbind( 'mousemove', mousemove );
         $document.unbind( 'mouseup', mouseup );
       }
@@ -66,12 +68,16 @@ app.directive( 'draggable', function( $document ) {
     };
   })
   .directive( 'editable', function() {
+    var converter = Markdown.getSanitizingConverter();
+
     return {
       require: '?ngModel',
 
       link: function( scope, element, attrs, ngModel ) {
         element.bind( 'click', function( event ) {
-          element.attr( 'contenteditable', 'true' );
+          // element.attr( 'contenteditable', 'true' );
+          console.log( element.val() );
+          console.log( converter.makeHtml( element.val() ) );
         });
 
         element.bind( 'mousedown', function( event ) {
@@ -91,7 +97,7 @@ app.directive( 'draggable', function( $document ) {
         });
 
         element.bind( 'blur', function() {
-          element.attr( 'contenteditable', 'false' );
+          // element.attr( 'contenteditable', 'false' );
         });
 
         // Initialize element to current value.

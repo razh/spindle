@@ -19,6 +19,13 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
       width: 150,
       title: 'and here is a third test',
       text: 'oh come on, we can think of better text than this'
+    },
+    {
+      x: 100,
+      y: 300,
+      width: 80,
+      title: 'how about a fourth?',
+      text: 'something new, and perhaps unexpected'
     }
   ];
 
