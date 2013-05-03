@@ -9,10 +9,12 @@
   <body>
     <div class="container" ng-controller="SpindleCtrl">
       <div ng-repeat="passage in passages">
-        <div resizable draggable class="resizable passage" x={{passage.x}} y={{passage.y}} width={{passage.width}}>
-          <div editable class="passage-title" ng-model="passage.title"></div>
+        <div resizable draggable class="resizable passage" x={{passage.x}} y={{passage.y}} width={{passage.width}} ng-controller="PassageCtrl">
+          <div editable class="passage-title" ng-model="passage.title" ng-hide="titleEditing" ng-dblclick="toggleTitleEditing()"></div>
+          <textarea class="passage-title" ng-model="passage.title" ng-show="titleEditing" ng-dblclick="toggleTitleEditing()"></textarea>
           <hr>
-          <textarea rows="5" editable class="passage-text" ng-model="passage.text"></textarea>
+          <div editable class="passage-text" ng-model="passage.text" ng-hide="textEditing" ng-dblclick="toggleTextEditing()"></div>
+          <textarea class="passage-text" ng-model="passage.text" ng-show="textEditing" ng-dblclick="toggleTextEditing()"></textarea>
         </div>
       </div>
     </div>

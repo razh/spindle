@@ -74,11 +74,7 @@ app.directive( 'draggable', function( $document ) {
       require: '?ngModel',
 
       link: function( scope, element, attrs, ngModel ) {
-        element.bind( 'click', function( event ) {
-          // element.attr( 'contenteditable', 'true' );
-          console.log( element.val() );
-          console.log( converter.makeHtml( element.val() ) );
-        });
+        element.bind( 'click', function( event ) {});
 
         element.bind( 'mousedown', function( event ) {
           event.stopPropagation();
