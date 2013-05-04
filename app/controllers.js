@@ -39,4 +39,8 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
         text: ''
       });
     };
+
+    $scope.removePassage = function( index ) {
+      $scope.passages.splice( index, 1 );
+    };
   }]);

@@ -8,8 +8,7 @@
   </head>
   <body>
     <div class="container" ng-controller="SpindleCtrl">
-      <div class="titles">
-        <div>Titles</div>
+      <div class="index">
         <div ng-repeat="passage in passages">
           <div editable ng-model="passage.title" contenteditable=false></div>
         </div>
@@ -17,6 +16,7 @@
 
       <div ng-repeat="passage in passages">
         <div resizable draggable class="resizable passage" x={{passage.x}} y={{passage.y}} width={{passage.width}}>
+          <button class="remove" ng-click="removePassage($index)">×</button>
           <div editable class="passage-title" ng-model="passage.title" contenteditable=false></div>
           <hr>
           <div editable class="passage-text" ng-model="passage.text" contenteditable=false></div>
