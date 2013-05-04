@@ -9,8 +9,13 @@
   <body>
     <div class="container" ng-controller="SpindleCtrl">
       <div class="index">
-        <div ng-repeat="passage in passages">
-          <div editable ng-model="passage.title" contenteditable=false></div>
+        <div class="index-header">Index</div>
+        <div class="index-body">
+          <div ng-repeat="passage in passages">
+            <div editable class="title" ng-model="passage.title" contenteditable=false></div>
+          </div>
+
+          <button class="add" ng-click="addPassage()">New passage +</button>
         </div>
       </div>
 
@@ -19,11 +24,9 @@
           <button class="remove" ng-click="removePassage($index)">×</button>
           <div editable class="passage-title" ng-model="passage.title" contenteditable=false></div>
           <hr>
-          <div editable class="passage-text" ng-model="passage.text" contenteditable=false></div>
+          <div markdown-editable class="passage-text" ng-model="passage.text" contenteditable=false></div>
         </div>
       </div>
-
-      <button ng-click="addPassage()"></button>
     </div>
 
     <footer>

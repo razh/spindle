@@ -67,7 +67,39 @@ app.directive( 'draggable', function( $document ) {
       }
     };
   })
+  // Simple editable directive.
   .directive( 'editable', function() {
+    return {
+      require: '?ngModel',
+
+      link: function( scope, element, attrs, ngModel ) {
+        if ( !ngModel ) { return; }
+
+        ngModel.$render = function() {
+          element.html( ngModel.$viewValue || '' );
+        };
+
+        element.bind( 'click', function() {
+          if ( element.attr( 'contenteditable' ) === 'false' ) {
+            element.attr( 'contenteditable', true );
+          }
+        });
+
+        element.bind( 'blur', function() {
+          if ( element.attr( 'contenteditable' ) === 'true' ) {
+            scope.$apply( read );
+            element.attr( 'contenteditable', false );
+          }
+        });
+
+        function read() {
+          ngModel.$setViewValue( element.html() );
+        }
+      }
+    };
+  })
+  // Editable directive with support for markdown.
+  .directive( 'markdownEditable', function() {
     var converter = Markdown.getSanitizingConverter();
 
     function convertToHtml( string ) {
@@ -108,7 +140,7 @@ app.directive( 'draggable', function( $document ) {
           element.html( converter.makeHtml( convertToMarkdown( ngModel.$viewValue || '' ) ) );
         };
 
-        element.bind( 'click', function( event ) {
+        element.bind( 'click', function() {
           // Necessary to compare it against string representation.
           if ( element.attr( 'contenteditable' ) === 'false' ) {
             // Set editable to true and populate with underlying markup.

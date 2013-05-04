@@ -48,8 +48,7 @@ footer {
   font-size: 24pt;
   text-align: center;
 
-  // background-color: $passage-color;
-  position: absolute;
+  position: fixed;
 
   padding: {
     top: $radius;
@@ -59,9 +58,6 @@ footer {
   left: 50%;
   width: 200px;
   margin-left: -100px;
-
-  // border-top-left-radius: $radius;
-  // border-top-right-radius: $radius;
 
   bottom: 0;
 
@@ -76,6 +72,61 @@ hr {
   border: 0;
   border-bottom: 1px solid rgba( 0, 0, 0, 0.1 );
 }
+
+button {
+  font-weight: bold;
+  opacity: 0.4;
+
+  border: 0;
+  background: transparent;
+
+  &:hover {
+    opacity: 1.0;
+  }
+}
+
+.index {
+  width: 2 * $width;
+}
+
+.index-header {
+  color: $passage-color;
+  background-color: $text-color;
+
+  padding: $radius;
+
+  text-align: center;
+}
+
+.index-body {
+  background-color: $passage-color;
+  padding: $spacing;
+
+  border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
+
+  .title {
+    margin-top: $spacing;
+    margin-bottom: $spacing;
+  }
+
+  .ng-scope + .ng-scope {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .title[contenteditable=true] {
+    outline: 1px solid #aaa;
+  }
+
+  .add {
+    position: relative;
+    float: right;
+    bottom: 0.5 * $spacing;
+    right: -0.5 * $spacing; // Align with right edge.
+    line-height: 14pt;
+  }
+}
+
 
 .resizable {
   resize: both;
@@ -100,22 +151,21 @@ hr {
     top: 0.5 * $spacing;
     right: -0.5 * $spacing; // Align center with edge of padding.
     line-height: 14pt; // Aligns with first line of title.
+  }
 
-    opacity: 0.4;
-    font-weight: bold;
+  div[contenteditable=true] {
+    border: 1px solid #ccc;
+    outline: none;
+  }
 
-    border: 0;
-    background: transparent;
-
-    &:hover {
-      opacity: 1.0;
-    }
+  .passage-text[contenteditable=true] {
+    font-size: 9pt;
+    font-family: Monaco;
   }
 }
 
 @mixin text-view($color, $background) {
   font-weight: normal;
-  font-family: Helvetica, sans-serif;
   font-size: 12pt;
 
   color: $color;
@@ -131,14 +181,6 @@ hr {
 
 .passage-text {
   @include text-view($text-color, $passage-color);
-}
-
-div[contenteditable=true] {
-  font-size: 9pt;
-  font-family: Monaco;
-
-  border: 1px solid #ccc;
-  outline: none;
 }
 
 // Placeholder text.

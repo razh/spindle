@@ -33,8 +33,8 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
 
     $scope.addPassage = function() {
       $scope.passages.push({
-        x: 0,
-        y: 0,
+        x: 0.5 * window.innerWidth,
+        y: 0.5 * window.innerHeight,
         title: '',
         text: ''
       });
