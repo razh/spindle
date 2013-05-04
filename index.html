@@ -9,12 +9,10 @@
   <body>
     <div class="container" ng-controller="SpindleCtrl">
       <div ng-repeat="passage in passages">
-        <div resizable draggable class="resizable passage" x={{passage.x}} y={{passage.y}} width={{passage.width}} ng-controller="PassageCtrl">
-          <div class="passage-title-view" ng-hide="titleEditing" ng-dblclick="toggleTitleEditing()">{{passage.title}}</div>
-          <textarea class="passage-title-edit" ng-model="passage.title" ng-show="titleEditing" ng-dblclick="toggleTitleEditing()"></textarea>
+        <div resizable draggable class="resizable passage" x={{passage.x}} y={{passage.y}} width={{passage.width}}>
+          <div editable class="passage-title" ng-model="passage.title" contenteditable=false></div>
           <hr>
-          <div class="passage-text-view" ng-hide="textEditing" ng-dblclick="toggleTextEditing()">{{passage.text}}</div>
-          <textarea class="passage-text-edit" ng-model="passage.text" ng-show="textEditing" ng-dblclick="toggleTextEditing()"></textarea>
+          <div editable class="passage-text" ng-model="passage.text" contenteditable=false></div>
         </div>
       </div>
     </div>
@@ -27,6 +25,7 @@
     <script src="app/lib/pagedown/Markdown.Converter.js"></script>
     <script src="app/lib/pagedown/Markdown.Editor.js"></script>
     <script src="app/lib/pagedown/Markdown.Sanitizer.js"></script>
+    <script src="app/lib/phpjs/nl2br.js"></script>
     <script src="app/main.js"></script>
     <script src="app/controllers.js"></script>
     <script src="app/directives.js"></script>

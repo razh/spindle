@@ -50,12 +50,12 @@ hr {
   -ms-user-select: none;
   user-select: none; }
 
-.passage-title-view {
+.passage-title {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
   user-select: text;
-  font-weight: bold;
+  font-weight: normal;
   font-family: Helvetica, sans-serif;
   font-size: 12pt;
   color: #c84339;
@@ -63,15 +63,21 @@ hr {
   resize: none;
   border: 0; }
 
-.passage-text-view {
+.passage-text {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
   user-select: text;
-  font-weight: bold;
+  font-weight: normal;
   font-family: Helvetica, sans-serif;
   font-size: 12pt;
   color: #2c3e50;
   background-color: #ecf0f1;
   resize: none;
   border: 0; }
+
+div[contenteditable=true] {
+  font-size: 9pt;
+  font-family: Monaco;
+  border: 1px solid #ccc;
+  outline: none; }

@@ -2,16 +2,16 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
     $scope.passages = [
       {
         x: 400,
-        y: 200,
+        y: 120,
         width: 200,
-        title:  'hello this is a title',
-        text: 'maximum horoscopes decide contemporary conundrums'
+        title: 'hello this is a title',
+        text: 'maximum horoscopes\n\n# Title\ndecide contemporary conundrums\n# one\n\n# two'
       },
       {
         x: 200,
         y: 150,
         title: 'hello this is a second test',
-        text: 'how will this work? [[displayed text|and here is a third test]]'
+        text: 'how will this work? [displayed text](http://google.com)'
       },
       {
         x: 30,
@@ -25,28 +25,9 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
         y: 300,
         width: 80,
         title: 'how about a fourth?',
-        text: 'something new, and perhaps unexpected'
+        text: 'something new, and perhaps unexpected *italics* **bold**'
       }
     ];
 
     console.log( $scope.passages[0] );
-  }])
-  .controller( 'PassageCtrl', [ '$scope', function( $scope ) {
-    $scope.toggleTitleEditing = function() {
-      $scope.titleEditing = !$scope.titleEditing || false;
-      if ( $scope.textEditing ) {
-        $scope.textEditing = false;
-      }
-
-      console.log( 'toggle' );
-    };
-
-    $scope.toggleTextEditing = function() {
-      $scope.textEditing = !$scope.textEditing || false;
-      if ( $scope.titleEditing ) {
-        $scope.titleEditing = false;
-      }
-
-      console.log( 'toggleText' );
-    };
   }]);

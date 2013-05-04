@@ -98,7 +98,8 @@ hr {
 
 
 @mixin text-view($color, $background) {
-  font-weight: bold;
+  // font-weight: bold;
+  font-weight: normal;
   font-family: Helvetica, sans-serif;
   font-size: 12pt;
 
@@ -109,18 +110,22 @@ hr {
   border: 0;
 }
 
-.passage-title-view {
+.passage-title {
   @include user-select(text);
   @include text-view($title-color, $passage-color);
 }
 
-.passage-text-view {
+.passage-text {
   @include user-select(text);
   @include text-view($text-color, $passage-color);
 }
 
-.passage-title-edit {
+div[contenteditable=true] {
+  font-size: 9pt;
+  font-family: Monaco;
 
+  border: 1px solid #ccc;
+  outline: none;
 }
 
 .selected {}

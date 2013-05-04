@@ -74,37 +74,43 @@ app.directive( 'draggable', function( $document ) {
       require: '?ngModel',
 
       link: function( scope, element, attrs, ngModel ) {
+        // Do nothing if no ng-model exists.
+        if ( !ngModel ) { return; }
+
+        // Format and initialize the view in Markdown.
+        ngModel.$render = function() {
+          element.html( converter.makeHtml( ngModel.$viewValue || '' ) );
+        };
+
         element.bind( 'click', function( event ) {
-          element.attr( 'contenteditable', 'true' );
-          console.log( element.val() );
-          console.log( converter.makeHtml( element.val() ) );
+          // Necessary to compare it against string representation.
+          if ( element.attr( 'contenteditable' ) === 'false' ) {
+            // Set editable to true and populate with underlying markup.
+            // nl2br adds <br> tag before \n, so we'll have to remove extra \n.
+            element.attr( 'contenteditable', true );
+            element.html( nl2br( ngModel.$viewValue, false ).replace( /\n/g, '' ) );
+          }
         });
 
+        // No dragging while editing.
         element.bind( 'mousedown', function( event ) {
           event.stopPropagation();
         });
 
-        // Do nothing if no ng-model exists.
-        if ( !ngModel ) { return; }
-
-        ngModel.$render = function() {
-          element.html( ngModel.$viewValue || '' );
-        };
-
-        // Update on change.
-        element.bind( 'blur keyup change', function() {
-          scope.$apply( read );
-        });
-
         element.bind( 'blur', function() {
-          element.attr( 'contenteditable', 'false' );
+          if ( element.attr( 'contenteditable' ) === 'true' ) {
+            scope.$apply( read );
+            element.html( converter.makeHtml( ngModel.$viewValue ) );
+            element.attr( 'contenteditable', false );
+          }
         });
-
-        // Initialize element to current value.
-        element.html( ngModel.$viewValue );
 
         function read() {
-          ngModel.$setViewValue( element.html() );
+          // Replace what Chrome uses to add new lines to contenteditable divs.
+          ngModel.$setViewValue( element.html().replace( /<div><br><\/div>/g, '\n' )
+                                               .replace( /<br>/g, '\n' )
+                                               .replace( /<div>/g, '\n' )
+                                               .replace( /<\/div>/g, '' ) );
         }
       }
     };
