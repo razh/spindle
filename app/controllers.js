@@ -30,4 +30,13 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
     ];
 
     console.log( $scope.passages[0] );
+
+    $scope.addPassage = function() {
+      $scope.passages.push({
+        x: 0,
+        y: 0,
+        title: '',
+        text: ''
+      });
+    };
   }]);
