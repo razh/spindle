@@ -18,7 +18,7 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
         y: 50,
         width: 150,
         title: 'and here is a third test',
-        text: 'oh come on, we can think of better text than this'
+        text: 'oh come on, we can think of better text than this\n\n    <<&lt;&lt;!@#\n    $%^&*())_+-=[] ) {}'
       },
       {
         x: 100,

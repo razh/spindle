@@ -44,17 +44,9 @@ hr {
   background-color: #ecf0f1;
   box-shadow: 0 2.5px 10px rgba(0, 0, 0, 0.25);
   position: absolute;
-  width: 120px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
+  width: 120px; }
 
 .passage-title {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
   font-weight: normal;
   font-family: Helvetica, sans-serif;
   font-size: 12pt;
@@ -64,10 +56,6 @@ hr {
   border: 0; }
 
 .passage-text {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
   font-weight: normal;
   font-family: Helvetica, sans-serif;
   font-size: 12pt;
@@ -81,3 +69,10 @@ div[contenteditable=true] {
   font-family: Monaco;
   border: 1px solid #ccc;
   outline: none; }
+
+div:empty:before {
+  content: "Click to edit.";
+  color: #aaa; }
+
+code {
+  color: green; }

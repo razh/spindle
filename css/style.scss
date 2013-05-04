@@ -92,8 +92,6 @@ hr {
   position: absolute;
 
   width: $width;
-
-  @include user-select(none);
 }
 
 
@@ -111,12 +109,10 @@ hr {
 }
 
 .passage-title {
-  @include user-select(text);
   @include text-view($title-color, $passage-color);
 }
 
 .passage-text {
-  @include user-select(text);
   @include text-view($text-color, $passage-color);
 }
 
@@ -126,6 +122,16 @@ div[contenteditable=true] {
 
   border: 1px solid #ccc;
   outline: none;
+}
+
+// Placeholder text.
+div:empty:before {
+  content: "Click to edit.";
+  color: #aaa;
+}
+
+code {
+  color: green;
 }
 
 .selected {}

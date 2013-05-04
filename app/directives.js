@@ -70,6 +70,32 @@ app.directive( 'draggable', function( $document ) {
   .directive( 'editable', function() {
     var converter = Markdown.getSanitizingConverter();
 
+    function convertToHtml( string ) {
+      // nl2br adds <br> tag before \n, so we'll have to remove extra \n.
+      return nl2br( string, false )
+        .replace( /\n/g, '' )
+        // Replace consecutive spaces with non-breaking space.
+        .replace( /  /g, '&nbsp; ' );
+    }
+
+    function convertToMarkdown( string ) {
+      return string
+       // Remove extraneous <pre> and <span> tags.
+       .replace( /<pre style="[a-zA-Z0-9\-:; ]*">/g, '' )
+       .replace( /<\/pre>/g, '' )
+       .replace( /<span style="[a-zA-Z0-9\-:; ]*">/g, '' )
+       .replace( /<\/span>/g, '' )
+       // Replace <div> and <br> tag combinations with new lines.
+       .replace( /<div><br><\/div>/g, '\n' )
+       .replace( /<br>/g, '\n' )
+       .replace( /<div>/g, '\n' )
+       .replace( /<\/div>/g, '' )
+       .replace( /&nbsp;/g, ' ' )
+       // Handle non-alphanumeric character codes.
+       .replace( /&gt;/g, '>' )
+       .replace( /&lt;/g, '<' );
+    }
+
     return {
       require: '?ngModel',
 
@@ -79,16 +105,15 @@ app.directive( 'draggable', function( $document ) {
 
         // Format and initialize the view in Markdown.
         ngModel.$render = function() {
-          element.html( converter.makeHtml( ngModel.$viewValue || '' ) );
+          element.html( converter.makeHtml( convertToMarkdown( ngModel.$viewValue || '' ) ) );
         };
 
         element.bind( 'click', function( event ) {
           // Necessary to compare it against string representation.
           if ( element.attr( 'contenteditable' ) === 'false' ) {
             // Set editable to true and populate with underlying markup.
-            // nl2br adds <br> tag before \n, so we'll have to remove extra \n.
             element.attr( 'contenteditable', true );
-            element.html( nl2br( ngModel.$viewValue, false ).replace( /\n/g, '' ) );
+            element.html( convertToHtml( ngModel.$viewValue ) );
           }
         });
 
@@ -107,10 +132,7 @@ app.directive( 'draggable', function( $document ) {
 
         function read() {
           // Replace what Chrome uses to add new lines to contenteditable divs.
-          ngModel.$setViewValue( element.html().replace( /<div><br><\/div>/g, '\n' )
-                                               .replace( /<br>/g, '\n' )
-                                               .replace( /<div>/g, '\n' )
-                                               .replace( /<\/div>/g, '' ) );
+          ngModel.$setViewValue( convertToMarkdown( element.html() ) );
         }
       }
     };
