@@ -1,7 +1,7 @@
 app.directive( 'draggable', function( $document ) {
     return function( scope, element, attrs ) {
-      var startX = scope.passage.x || 0,
-          startY = scope.passage.y || 0,
+      var startX = attrs.x || 0,
+          startY = attrs.y || 0,
           x = startX,
           y = startY;
 

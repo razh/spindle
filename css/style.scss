@@ -12,6 +12,7 @@ $background-color: #3498db;
 $hr-color: rgba( 0, 0, 0, 0.25 );
 
 $controls-width: 20px;
+$button-size: 20px;
 
 @mixin transform($transform) {
   -webkit-transform: $transform;
@@ -89,6 +90,12 @@ hr {
   margin: 20px 0;
   border: 0;
   border-bottom: 1px solid $hr-color;
+}
+
+code {
+  color: green;
+  font-size: 10pt;
+  font-family: Monaco, monospace;
 }
 
 button {
@@ -232,10 +239,99 @@ div:empty:before {
   color: #aaa;
 }
 
-code {
-  color: green;
-  font-size: 10pt;
-  font-family: Monaco, monospace;
+.wmd-panel {
+  background-color: $passage-color;
+  box-shadow: 0 $shadow $shadow-blur rgba( 0, 0, 0, 0.25 );
+  padding: $spacing;
+  position: absolute;
+  top: 200px;
+  left: 300px;
+  width: 375px;
+
+  .wmd-button-bar {
+    width: 100%;
+    background-color: darken($passage-color, 5%);
+  }
+
+  .wmd-button-bar:before {
+    // content: 'PLACE-HOLDER BUTTONS';
+    position: absolute;
+  }
+
+  .wmd-button {
+    width: $button-size;
+    height: $button-size;
+    padding: {
+      right: 3px;
+      left: 2px;
+    }
+    position: absolute;
+    display: inline-block;
+    list-style: none;
+
+    border-radius: 5px;
+    background-color: darken($passage-color, 10%);
+    box-shadow: 1px 1px darken($passage-color, 20%);
+    opacity: 0.5;
+  }
+
+  #wmd-bold-button:before {
+    content: 'b';
+    color: black;
+
+    position: absolute;
+    top: 2px;
+
+    margin-left: 5px;
+  }
+
+  #wmd-italic-button:before {
+    content: 'i';
+    color: black;
+
+    position: absolute;
+    top: 2px;
+
+    margin-left: 8px;
+  }
+
+  .wmd-button > span {
+    width: $button-size;
+    height: $button-size;
+    display: inline-block;
+  }
+
+  .wmd-button-row {
+    position: relative;
+    height: $button-size;
+
+    margin: {
+      top: 10px;
+      right: 5px;
+      bottom: 5px;
+    }
+    padding: 0;
+  }
+
+  .wmd-spacer {
+    width: 1px;
+    height: $button-size;
+
+    position: absolute;
+    display: inline-block;
+
+    list-style: none;
+  }
+
+  .wmd-input {
+    @include text-view($text-color, $passage-color);
+    @include calc(width, $spacing);
+    height: 120px;
+  }
+
+  .wmd-preview {
+    font-weight: normal;
+  }
 }
 
 .selected {}

@@ -25,7 +25,7 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
         y: 150,
         width: 300,
         title: 'how about a fourth?',
-        text: 'something new, and perhaps unexpected *italics* **bold**'
+        text: 'something new, and perhaps unexpected *italics* **bold**\n\n[test](hello this is a title)'
       }
     ];
 
