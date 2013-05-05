@@ -28,6 +28,15 @@ $controls-width: 20px;
           user-select: $selection;
 }
 
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+   -khtml-transition: $transition;
+     -moz-transition: $transition;
+      -ms-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+
 @mixin calc($property, $amount) {
   #{$property}: -webkit-calc(100% - #{$amount});
   #{$property}:    -moz-calc(100% - #{$amount});
@@ -175,6 +184,21 @@ button {
   }
 }
 
+.passage-enter-setup,
+.passage-leave-setup {
+  @include transition(0.2s ease-in-out all);
+}
+
+.passage-enter-setup,
+.passage-leave-setup.passage-leave-start {
+  opacity: 0;
+}
+
+.passage-enter-setup.passage-enter-start,
+.passage-leave-setup {
+  opacity: 1;
+}
+
 @mixin text-view($color, $background) {
   padding: $radius;
 
@@ -210,6 +234,8 @@ div:empty:before {
 
 code {
   color: green;
+  font-size: 10pt;
+  font-family: Monaco, monospace;
 }
 
 .selected {}

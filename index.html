@@ -21,10 +21,10 @@
         </div>
       </div>
 
-      <div ng-repeat="passage in passages">
+      <div ng-repeat="passage in passages" ng-animate=" 'passage' ">
         <div resizable draggable class="resizable passage" x={{passage.x}} y={{passage.y}} width={{passage.width}}>
           <div class="passage-header">
-            <div editable class="passage-title" ng-model="passage.title" contenteditable=false></div>
+            <div editable class="passage-title" ng-model="passage.title" contenteditable=false tabindex=0></div>
           </div>
           <div class="passage-controls">
             <button ng-click="removePassage($index)">×</button>
@@ -33,7 +33,7 @@
 
           <div class="passage-body" ng-hide="isPassageVisible($index)">
             <hr>
-            <div markdown-editable class="passage-text" ng-model="passage.text" contenteditable=false></div>
+            <div markdown-editable class="passage-text" ng-model="passage.text" contenteditable=false tabindex=0></div>
           </div>
         </div>
       </div>

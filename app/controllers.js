@@ -31,13 +31,19 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
 
     console.log( $scope.passages[0] );
 
+    var angle = 0;
     $scope.addPassage = function() {
+      var halfWidth = 0.5 * window.innerWidth,
+          halfHeight = 0.5 * window.innerHeight;
+
       $scope.passages.push({
-        x: 0.5 * window.innerWidth,
-        y: 0.5 * window.innerHeight,
+        x: halfWidth - 0.5 * Math.cos( angle ) * halfWidth,
+        y: halfHeight + ( 0.5 * Math.sin( angle ) - 0.4 ) * halfHeight,
         title: '',
         text: ''
       });
+
+      angle -= Math.PI * 0.125;
     };
 
     $scope.removePassage = function( index ) {

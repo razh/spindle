@@ -92,6 +92,23 @@ button {
     margin-top: 10px;
     margin-right: -10px; }
 
+.passage-enter-setup,
+.passage-leave-setup {
+  -webkit-transition: 0.2s ease-in-out all;
+  -khtml-transition: 0.2s ease-in-out all;
+  -moz-transition: 0.2s ease-in-out all;
+  -ms-transition: 0.2s ease-in-out all;
+  -o-transition: 0.2s ease-in-out all;
+  transition: 0.2s ease-in-out all; }
+
+.passage-enter-setup,
+.passage-leave-setup.passage-leave-start {
+  opacity: 0; }
+
+.passage-enter-setup.passage-enter-start,
+.passage-leave-setup {
+  opacity: 1; }
+
 .passage-header {
   display: inline-block;
   width: -webkit-calc(100% - 30px);
@@ -121,4 +138,6 @@ div:empty:before {
   color: #aaa; }
 
 code {
-  color: green; }
+  color: green;
+  font-size: 10pt;
+  font-family: Monaco, monospace; }
