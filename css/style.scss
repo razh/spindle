@@ -9,6 +9,9 @@ $text-color: #2c3e50;
 $title-color: rgba( 200, 67, 57, 1.0 );
 $passage-color: #ecf0f1;
 $background-color: #3498db;
+$hr-color: rgba( 0, 0, 0, 0.25 );
+
+$controls-width: 20px;
 
 @mixin transform($transform) {
   -webkit-transform: $transform;
@@ -23,6 +26,12 @@ $background-color: #3498db;
      -moz-user-select: $selection;
       -ms-user-select: $selection;
           user-select: $selection;
+}
+
+@mixin calc($property, $amount) {
+  #{$property}: -webkit-calc(100% - #{$amount});
+  #{$property}:    -moz-calc(100% - #{$amount});
+  #{$property}:         calc(100% - #{$amount});
 }
 
 body {
@@ -61,7 +70,7 @@ footer {
 
   bottom: 0;
 
-  @include transform(skew(0deg, -20deg) rotate(20deg));
+  // @include transform(skew(0deg, -20deg) rotate(20deg));
 
   box-shadow: 0 -2px 5px rgba( 0, 0, 0, 0.25 );
   text-shadow: 2px 2px 5px rgba( 0, 0, 0, 0.5 );
@@ -70,7 +79,7 @@ footer {
 hr {
   margin: 20px 0;
   border: 0;
-  border-bottom: 1px solid rgba( 0, 0, 0, 0.1 );
+  border-bottom: 1px solid $hr-color;
 }
 
 button {
@@ -94,15 +103,23 @@ button {
   background-color: $text-color;
 
   padding: $radius;
-
   text-align: center;
+
+  .add {
+    color: $passage-color;
+    // bottom: 2 * $spacing;
+    float: right;
+    margin-top: -2px;
+
+    border: 1px solid $passage-color;
+    border-radius: 0.25 * $radius;
+  }
 }
 
 .index-body {
   background-color: $passage-color;
   padding: $spacing;
 
-  border-bottom-left-radius: $radius;
   border-bottom-right-radius: $radius;
 
   .title {
@@ -111,19 +128,11 @@ button {
   }
 
   .ng-scope + .ng-scope {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid $hr-color;
   }
 
   .title[contenteditable=true] {
-    outline: 1px solid #aaa;
-  }
-
-  .add {
-    position: relative;
-    float: right;
-    bottom: 0.5 * $spacing;
-    right: -0.5 * $spacing; // Align with right edge.
-    line-height: 14pt;
+    outline: 1px solid $hr-color;
   }
 }
 
@@ -134,6 +143,7 @@ button {
 }
 
 .passage {
+  width: $width;
   padding: $spacing;
 
   border-radius: $radius;
@@ -143,18 +153,9 @@ button {
 
   position: absolute;
 
-  width: $width;
-
-  .remove {
-    position: relative;
-    float: right;
-    top: 0.5 * $spacing;
-    right: -0.5 * $spacing; // Align center with edge of padding.
-    line-height: 14pt; // Aligns with first line of title.
-  }
-
   div[contenteditable=true] {
-    border: 1px solid #ccc;
+    background-color: darken($passage-color, 5%);
+    border-radius: $radius;
     outline: none;
   }
 
@@ -162,9 +163,21 @@ button {
     font-size: 9pt;
     font-family: Monaco;
   }
+
+  .passage-controls {
+    border-left: 1px solid #aaa;
+    position: absolute;
+    right: $spacing;
+    top: $radius;
+    width: $controls-width;
+    margin-top: $radius;
+    margin-right: -$radius;
+  }
 }
 
 @mixin text-view($color, $background) {
+  padding: $radius;
+
   font-weight: normal;
   font-size: 12pt;
 
@@ -175,8 +188,14 @@ button {
   border: 0;
 }
 
-.passage-title {
-  @include text-view($title-color, $passage-color);
+.passage-header {
+  display: inline-block;
+  @include calc(width, $controls-width + $radius);
+
+  .passage-title {
+    @include text-view($title-color, $passage-color);
+    font-weight: bold;
+  }
 }
 
 .passage-text {

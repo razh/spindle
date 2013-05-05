@@ -11,6 +11,11 @@ app.directive( 'draggable', function( $document ) {
       });
 
       element.bind( 'mousedown', function( event ) {
+        // Stop if not left mouse button.
+        if ( event.which !== 1 ) {
+          return;
+        }
+
         element.addClass( 'selected' );
         startX = event.screenX - x;
         startY = event.screenY - y;

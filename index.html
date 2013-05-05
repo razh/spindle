@@ -9,22 +9,32 @@
   <body>
     <div class="container" ng-controller="SpindleCtrl">
       <div class="index">
-        <div class="index-header">Index</div>
+        <div class="index-header">
+          Index
+          <button class="add" ng-click="addPassage()">+</button>
+        </div>
+
         <div class="index-body">
           <div ng-repeat="passage in passages">
             <div editable class="title" ng-model="passage.title" contenteditable=false></div>
           </div>
-
-          <button class="add" ng-click="addPassage()">New passage +</button>
         </div>
       </div>
 
       <div ng-repeat="passage in passages">
         <div resizable draggable class="resizable passage" x={{passage.x}} y={{passage.y}} width={{passage.width}}>
-          <button class="remove" ng-click="removePassage($index)">×</button>
-          <div editable class="passage-title" ng-model="passage.title" contenteditable=false></div>
-          <hr>
-          <div markdown-editable class="passage-text" ng-model="passage.text" contenteditable=false></div>
+          <div class="passage-header">
+            <div editable class="passage-title" ng-model="passage.title" contenteditable=false></div>
+          </div>
+          <div class="passage-controls">
+            <button ng-click="removePassage($index)">×</button>
+            <button ng-click="togglePassageVisibility($index)">-</button>
+          </div>
+
+          <div class="passage-body" ng-hide="isPassageVisible($index)">
+            <hr>
+            <div markdown-editable class="passage-text" ng-model="passage.text" contenteditable=false></div>
+          </div>
         </div>
       </div>
     </div>
