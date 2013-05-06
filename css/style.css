@@ -23,7 +23,6 @@ footer {
   width: 240px;
   right: 0;
   top: 0;
-  border-bottom-left-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
   -webkit-transition: 0.1s ease-out all;
@@ -73,6 +72,7 @@ button {
   background-color: #ecf0f1;
   border-bottom-right-radius: 10px; }
   .index-body .title {
+    overflow: scroll;
     padding: 10px;
     font-family: "adelle", Georgia, serif;
     font-weight: normal; }
@@ -83,13 +83,13 @@ button {
   resize: both;
   overflow: auto; }
 
+div:focus,
 div[contenteditable=true] {
   outline: none; }
 
 .passage {
   width: 120px;
   padding: 20px;
-  border-radius: 10px;
   background-color: #ecf0f1;
   box-shadow: 0 2.5px 10px rgba(0, 0, 0, 0.25);
   position: absolute; }
