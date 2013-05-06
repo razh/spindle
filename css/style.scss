@@ -279,22 +279,22 @@ div:empty:before {
   .wmd-button {
     width: $button-size;
     height: $button-size;
-    padding: {
-      right: 2px;
-      left: 2px;
-    }
+    padding: 1px 2px;
     position: absolute;
     display: inline-block;
     list-style: none;
 
     background-color: $text-color;
-    box-shadow: 1px 1px darken($passage-color, 30%);
+    border-radius: 3px;
 
     @include transition(background-color ease-out 0.1s);
 
     &:hover {
       color: $text-color;
       background-color: $passage-color;
+      border: 1px solid transparentize($text-color, 0.5);
+      width: $button-size - 2px;
+      height: $button-size - 2px;
     }
 
     &:active {
@@ -304,12 +304,12 @@ div:empty:before {
   }
 
   #wmd-bold-button:before {
-    content: "b";
+    content: "B";
     font-weight: bold;
   }
 
   #wmd-italic-button:before {
-    content: "i";
+    content: "I";
     font-style: italic;
   }
 

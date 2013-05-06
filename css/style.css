@@ -175,13 +175,12 @@ div:empty:before {
   .wmd-panel .wmd-button {
     width: 20px;
     height: 20px;
-    padding-right: 2px;
-    padding-left: 2px;
+    padding: 1px 2px;
     position: absolute;
     display: inline-block;
     list-style: none;
     background-color: #2c3e50;
-    box-shadow: 1px 1px #94aab0;
+    border-radius: 3px;
     -webkit-transition: background-color ease-out 0.1s;
     -khtml-transition: background-color ease-out 0.1s;
     -moz-transition: background-color ease-out 0.1s;
@@ -190,15 +189,18 @@ div:empty:before {
     transition: background-color ease-out 0.1s; }
     .wmd-panel .wmd-button:hover {
       color: #2c3e50;
-      background-color: #ecf0f1; }
+      background-color: #ecf0f1;
+      border: 1px solid rgba(44, 62, 80, 0.5);
+      width: 18px;
+      height: 18px; }
     .wmd-panel .wmd-button:active {
       color: #ecf0f1;
       background-color: #2c3e50; }
   .wmd-panel #wmd-bold-button:before {
-    content: "b";
+    content: "B";
     font-weight: bold; }
   .wmd-panel #wmd-italic-button:before {
-    content: "i";
+    content: "I";
     font-style: italic; }
   .wmd-panel #wmd-link-button:before {
     content: "url";
