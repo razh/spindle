@@ -90,6 +90,12 @@ app.directive( 'draggable', function( $document ) {
           }
         });
 
+        element.bind( 'change keyup', function() {
+          if ( element.attr( 'contenteditable' ) === 'true' ) {
+            scope.$apply( read );
+          }
+        });
+
         element.bind( 'blur', function() {
           if ( element.attr( 'contenteditable' ) === 'true' ) {
             scope.$apply( read );

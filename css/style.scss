@@ -92,10 +92,11 @@ footer {
   box-shadow: 0 2px 5px rgba( 0, 0, 0, 0.25 );
   text-shadow: 3px 3px 0 rgba( 0, 0, 0, 0.25 );
 
-  @include transition(0.2s ease-out all);
+  @include transition(0.1s ease-out all);
 
   &:hover {
-    background-color: darken($title-color, 5%);
+    // background-color: darken($title-color, 10%);
+    text-shadow: 3px 3px 0 rgba( 0, 0, 0, 0.1 ), 0 0 2px white;
   }
 }
 
@@ -135,40 +136,40 @@ button {
   text-align: center;
 
   .add {
-    color: $passage-color;
-    // bottom: 2 * $spacing;
-    float: right;
-    margin-top: -2px;
+    font-size: 14pt;
+    line-height: 7pt;
+    vertical-align: middle;
 
-    border: 1px solid $passage-color;
+    color: $passage-color;
+    float: right;
+
     border-radius: 0.25 * $radius;
   }
 }
 
 .index-body {
   background-color: $passage-color;
-  padding: $spacing;
-
   border-bottom-right-radius: $radius;
 
   .title {
-    margin-top: $spacing;
-    margin-bottom: $spacing;
-  }
+    padding: $radius;
 
-  .ng-scope + .ng-scope {
-    border-top: 1px solid $hr-color;
+    font-family: $serif;
+    font-weight: normal;
   }
 
   .title[contenteditable=true] {
-    outline: 1px solid $hr-color;
+    text-decoration: underline;
   }
 }
-
 
 .resizable {
   resize: both;
   overflow: auto;
+}
+
+div[contenteditable=true] {
+  outline: none;
 }
 
 .passage {
@@ -185,7 +186,6 @@ button {
   div[contenteditable=true] {
     background-color: darken($passage-color, 5%);
     border-radius: $radius;
-    outline: none;
   }
 
   .passage-text[contenteditable=true] {
@@ -249,7 +249,10 @@ button {
 // Placeholder text.
 div:empty:before {
   content: "Click to edit.";
-  color: #aaa;
+
+  color: darken($passage-color, 20%);
+  font-weight: 100;
+  letter-spacing: 1px;
 }
 
 .wmd-panel {
@@ -264,7 +267,6 @@ div:empty:before {
 
   .wmd-button-bar {
     width: 100%;
-    background-color: darken($passage-color, 5%);
     color: $passage-color;
 
     font-family: Georgia, serif;
@@ -280,15 +282,14 @@ div:empty:before {
     width: $button-size;
     height: $button-size;
     padding: {
-      right: 3px;
+      right: 2px;
       left: 2px;
     }
     position: absolute;
     display: inline-block;
     list-style: none;
 
-    border-radius: 3px;
-    background-color: darken($passage-color, 50%);
+    background-color: $text-color;
     box-shadow: 1px 1px darken($passage-color, 30%);
 
     @include transition(background-color ease-out 0.1s);
@@ -325,9 +326,8 @@ div:empty:before {
   }
 
   #wmd-code-button:before {
-    content: "c";
+    content: "{}";
     font-family: $monospace;
-    font-size: 10pt;
   }
 
   #wmd-image-button:before {

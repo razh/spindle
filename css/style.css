@@ -26,14 +26,14 @@ footer {
   border-bottom-left-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
-  -webkit-transition: 0.2s ease-out all;
-  -khtml-transition: 0.2s ease-out all;
-  -moz-transition: 0.2s ease-out all;
-  -ms-transition: 0.2s ease-out all;
-  -o-transition: 0.2s ease-out all;
-  transition: 0.2s ease-out all; }
+  -webkit-transition: 0.1s ease-out all;
+  -khtml-transition: 0.1s ease-out all;
+  -moz-transition: 0.1s ease-out all;
+  -ms-transition: 0.1s ease-out all;
+  -o-transition: 0.1s ease-out all;
+  transition: 0.1s ease-out all; }
   footer:hover {
-    background-color: #b53b32; }
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1), 0 0 2px white; }
 
 hr {
   margin: 20px 0;
@@ -62,27 +62,29 @@ button {
   padding: 10px;
   text-align: center; }
   .index-header .add {
+    font-size: 14pt;
+    line-height: 7pt;
+    vertical-align: middle;
     color: #ecf0f1;
     float: right;
-    margin-top: -2px;
-    border: 1px solid #ecf0f1;
     border-radius: 2.5px; }
 
 .index-body {
   background-color: #ecf0f1;
-  padding: 20px;
   border-bottom-right-radius: 10px; }
   .index-body .title {
-    margin-top: 20px;
-    margin-bottom: 20px; }
-  .index-body .ng-scope + .ng-scope {
-    border-top: 1px solid rgba(0, 0, 0, 0.25); }
+    padding: 10px;
+    font-family: "adelle", Georgia, serif;
+    font-weight: normal; }
   .index-body .title[contenteditable=true] {
-    outline: 1px solid rgba(0, 0, 0, 0.25); }
+    text-decoration: underline; }
 
 .resizable {
   resize: both;
   overflow: auto; }
+
+div[contenteditable=true] {
+  outline: none; }
 
 .passage {
   width: 120px;
@@ -93,8 +95,7 @@ button {
   position: absolute; }
   .passage div[contenteditable=true] {
     background-color: #dde4e6;
-    border-radius: 10px;
-    outline: none; }
+    border-radius: 10px; }
   .passage .passage-text[contenteditable=true] {
     font-size: 9pt;
     font-family: Monaco, "Lucida Console", monospace; }
@@ -150,7 +151,9 @@ button {
 
 div:empty:before {
   content: "Click to edit.";
-  color: #aaa; }
+  color: #b1c2c6;
+  font-weight: 100;
+  letter-spacing: 1px; }
 
 .wmd-panel {
   background-color: #ecf0f1;
@@ -162,7 +165,6 @@ div:empty:before {
   width: 375px; }
   .wmd-panel .wmd-button-bar {
     width: 100%;
-    background-color: #dde4e6;
     color: #ecf0f1;
     font-family: Georgia, serif;
     font-weight: 100;
@@ -173,13 +175,12 @@ div:empty:before {
   .wmd-panel .wmd-button {
     width: 20px;
     height: 20px;
-    padding-right: 3px;
+    padding-right: 2px;
     padding-left: 2px;
     position: absolute;
     display: inline-block;
     list-style: none;
-    border-radius: 3px;
-    background-color: #5e7980;
+    background-color: #2c3e50;
     box-shadow: 1px 1px #94aab0;
     -webkit-transition: background-color ease-out 0.1s;
     -khtml-transition: background-color ease-out 0.1s;
@@ -206,9 +207,8 @@ div:empty:before {
   .wmd-panel #wmd-quote-button:before {
     content: "\201c\201d"; }
   .wmd-panel #wmd-code-button:before {
-    content: "c";
-    font-family: Monaco, "Lucida Console", monospace;
-    font-size: 10pt; }
+    content: "{}";
+    font-family: Monaco, "Lucida Console", monospace; }
   .wmd-panel #wmd-image-button:before {
     content: "\25a2"; }
   .wmd-panel #wmd-olist-button:before {
