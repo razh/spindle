@@ -174,6 +174,13 @@ app.directive( 'draggable', function( $document ) {
       }
     };
   })
+  .directive( 'markdownInput', function() {
+    return function( scope, element, attrs ) {
+      element.bind( 'mousedown', function( event ) {
+        event.stopPropagation();
+      });
+    };
+  })
   .directive( 'fullscreen', function() {
     return function( scope, element, attrs ) {
 
