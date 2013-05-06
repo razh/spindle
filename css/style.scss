@@ -1,64 +1,14 @@
-$radius: 10px;
-$spacing: 2 * $radius;
-$shadow: 0.25 * $radius;
-$shadow-blur: $radius;
-
-$width: 120px;
-
-$text-color: #2c3e50;
-$title-color: rgba( 200, 67, 57, 1.0 );
-$passage-color: #ecf0f1;
-$background-color: #3498db;
-$hr-color: rgba( 0, 0, 0, 0.25 );
-
-$controls-width: 20px;
-$button-size: 20px;
-
-$sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$serif: "adelle", Georgia, serif;
-$monospace: Monaco, "Lucida Console", monospace;
-
-@mixin transform($transform) {
-  -webkit-transform: $transform;
-     -moz-transform: $transform;
-      -ms-transform: $transform;
-       -o-transform: $transform;
-          transform: $transform;
-}
-
-@mixin user-select($selection) {
-  -webkit-user-select: $selection;
-     -moz-user-select: $selection;
-      -ms-user-select: $selection;
-          user-select: $selection;
-}
-
-@mixin transition($transition) {
-  -webkit-transition: $transition;
-   -khtml-transition: $transition;
-     -moz-transition: $transition;
-      -ms-transition: $transition;
-       -o-transition: $transition;
-          transition: $transition;
-}
-
-@mixin calc($property, $amount) {
-  #{$property}: -webkit-calc(100% - #{$amount});
-  #{$property}:    -moz-calc(100% - #{$amount});
-  #{$property}:         calc(100% - #{$amount});
-}
+// Modules and variables.
+@import "partials/base";
 
 body {
   margin: 0;
   padding: 0;
 
-  -webkit-box-sizing: border-box;
-   -khtml-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-
   font-weight: bold;
   font-family: $sans-serif;
+
+  @include box-sizing(border-box);
 
   color: $text-color;
   background-color: $background-color;
