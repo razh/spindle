@@ -12,7 +12,7 @@
     width: 100%;
     color: $passage-color;
 
-    font-family: $button-serif;
+    font-family: $button-font;
     font-weight: 100;
     font-size: 8pt;
 
@@ -40,6 +40,8 @@
       border: 1px solid transparentize($text-color, 0.5);
       width: $button-size - 2px;
       height: $button-size - 2px;
+      // Stop button from shifting on hover.
+      line-height: 14pt;
     }
 
     &:active {
@@ -168,7 +170,7 @@
   input[type=button] {
     font-family: $sans-serif;
     color: white;
-    background-color: #1abc9c;
+    background-color: $text-color;
 
     border: 0;
     border-radius: $radius;
@@ -178,7 +180,7 @@
     @include transition(0.2s ease-in-out background-color);
 
     &:hover {
-      background-color: #16a085;
+      background-color: lighten($text-color, 20%);
     }
   }
 }
