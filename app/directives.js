@@ -42,6 +42,19 @@ app.directive( 'draggable', function( $document ) {
       }
     };
   })
+  .directive( 'editor', function() {
+    var converter = Markdown.getSanitizingConverter();
+
+    return function( scope, element, attrs ) {
+      // Hack to make sure each element is initialized with the right id.
+      angular.forEach( element.children(), function( child ) {
+        child.id += '-' + scope.$index;
+      });
+
+      var editor = new Markdown.Editor( converter, '-' + scope.$index );
+      editor.run();
+    };
+  })
   .directive( 'resizable', function() {
     var defaultWidth = 120;
 

@@ -35,17 +35,17 @@
 
           <div class="passage-body" ng-hide="isPassageVisible($index)">
             <hr>
-            <div markdown-editable class="passage-text" ng-model="passage.text" contenteditable=false tabindex=0></div>
+
+            <div editor class="wmd-panel">
+              <div class="wmd-button-bar" id="wmd-button-bar"></div>
+              <textarea markdown-input class="wmd-input" id="wmd-input" ng-model=passage.text></textarea>
+              <div class="preview-title">Preview</div>
+              <div class="wmd-preview" id="wmd-preview"></div>
+            </div>
+
           </div>
         </div>
       </div>
-    </div>
-
-    <div draggable class="wmd-panel" x=300 y=200>
-      <div class="wmd-button-bar" id="wmd-button-bar"></div>
-      <textarea markdown-input class="wmd-input" id="wmd-input">This is a test of various things.</textarea>
-      <div class="preview-title">Preview</div>
-      <div class="wmd-preview" id="wmd-preview"></div>
     </div>
 
     <footer>

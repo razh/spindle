@@ -1,13 +1,4 @@
 .wmd-panel {
-  background-color: $passage-color;
-
-  box-shadow: 0 $shadow $shadow-blur rgba( 0, 0, 0, 0.25 );
-  padding: $spacing;
-  position: absolute;
-  top: 200px;
-  left: 300px;
-  width: 375px;
-
   .wmd-button-bar {
     width: 100%;
     color: $passage-color;
