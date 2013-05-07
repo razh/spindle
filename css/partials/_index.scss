@@ -1,0 +1,39 @@
+.index {
+  width: 2 * $width;
+}
+
+.index-header {
+  color: $passage-color;
+  background-color: $text-color;
+
+  padding: $radius;
+  text-align: center;
+
+  .add {
+    font-size: 14pt;
+    line-height: 7pt;
+    vertical-align: middle;
+
+    color: $passage-color;
+    float: right;
+
+    border-radius: 0.25 * $radius;
+  }
+}
+
+.index-body {
+  background-color: $passage-color;
+  border-bottom-right-radius: $radius;
+
+  .title {
+    overflow: scroll;
+    padding: $radius;
+
+    font-family: $serif;
+    font-weight: normal;
+  }
+
+  .title[contenteditable=true] {
+    text-decoration: underline;
+  }
+}

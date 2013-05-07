@@ -1,0 +1,58 @@
+.passage {
+  width: $width;
+  padding: $spacing;
+
+  background-color: $passage-color;
+  box-shadow: 0 $shadow $shadow-blur rgba( 0, 0, 0, 0.25 );
+
+  position: absolute;
+
+  div[contenteditable=true] {
+    background-color: darken($passage-color, 5%);
+    border-radius: $radius;
+  }
+
+  .passage-text[contenteditable=true] {
+    font-size: 9pt;
+    font-family: $monospace;
+  }
+
+  .passage-controls {
+    border-left: 1px solid #aaa;
+    position: absolute;
+    right: $spacing;
+    top: $radius;
+    width: $controls-width;
+    margin-top: $radius;
+    margin-right: -$radius;
+  }
+}
+
+.passage-enter-setup,
+.passage-leave-setup {
+  @include transition(0.2s ease-in-out all);
+}
+
+.passage-enter-setup,
+.passage-leave-setup.passage-leave-start {
+  opacity: 0;
+}
+
+.passage-enter-setup.passage-enter-start,
+.passage-leave-setup {
+  opacity: 1;
+}
+
+.passage-header {
+  display: inline-block;
+  @include calc(width, $controls-width + $radius);
+
+  .passage-title {
+    @include text-view($title-color, $passage-color);
+    font-weight: bold;
+  }
+}
+
+.passage-text {
+  @include text-view($text-color, $passage-color);
+}

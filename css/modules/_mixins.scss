@@ -34,3 +34,16 @@
      -moz-box-sizing: $box-sizing;
           box-sizing: $box-sizing;
 }
+
+@mixin text-view($color, $background) {
+  padding: $radius;
+
+  font-weight: normal;
+  font-size: 12pt;
+
+  color: $color;
+  background-color: $background;
+
+  resize: none;
+  border: 0;
+}

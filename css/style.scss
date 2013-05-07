@@ -1,6 +1,11 @@
 // Modules and variables.
 @import "partials/base";
 
+// Partials.
+@import "partials/index";
+@import "partials/passage";
+@import "partials/wmd";
+
 body {
   margin: 0;
   padding: 0;
@@ -72,46 +77,6 @@ button {
   }
 }
 
-.index {
-  width: 2 * $width;
-}
-
-.index-header {
-  color: $passage-color;
-  background-color: $text-color;
-
-  padding: $radius;
-  text-align: center;
-
-  .add {
-    font-size: 14pt;
-    line-height: 7pt;
-    vertical-align: middle;
-
-    color: $passage-color;
-    float: right;
-
-    border-radius: 0.25 * $radius;
-  }
-}
-
-.index-body {
-  background-color: $passage-color;
-  border-bottom-right-radius: $radius;
-
-  .title {
-    overflow: scroll;
-    padding: $radius;
-
-    font-family: $serif;
-    font-weight: normal;
-  }
-
-  .title[contenteditable=true] {
-    text-decoration: underline;
-  }
-}
-
 .resizable {
   resize: both;
   overflow: auto;
@@ -122,78 +87,6 @@ div[contenteditable=true] {
   outline: none;
 }
 
-.passage {
-  width: $width;
-  padding: $spacing;
-
-  background-color: $passage-color;
-  box-shadow: 0 $shadow $shadow-blur rgba( 0, 0, 0, 0.25 );
-
-  position: absolute;
-
-  div[contenteditable=true] {
-    background-color: darken($passage-color, 5%);
-    border-radius: $radius;
-  }
-
-  .passage-text[contenteditable=true] {
-    font-size: 9pt;
-    font-family: $monospace;
-  }
-
-  .passage-controls {
-    border-left: 1px solid #aaa;
-    position: absolute;
-    right: $spacing;
-    top: $radius;
-    width: $controls-width;
-    margin-top: $radius;
-    margin-right: -$radius;
-  }
-}
-
-.passage-enter-setup,
-.passage-leave-setup {
-  @include transition(0.2s ease-in-out all);
-}
-
-.passage-enter-setup,
-.passage-leave-setup.passage-leave-start {
-  opacity: 0;
-}
-
-.passage-enter-setup.passage-enter-start,
-.passage-leave-setup {
-  opacity: 1;
-}
-
-@mixin text-view($color, $background) {
-  padding: $radius;
-
-  font-weight: normal;
-  font-size: 12pt;
-
-  color: $color;
-  background-color: $background;
-
-  resize: none;
-  border: 0;
-}
-
-.passage-header {
-  display: inline-block;
-  @include calc(width, $controls-width + $radius);
-
-  .passage-title {
-    @include text-view($title-color, $passage-color);
-    font-weight: bold;
-  }
-}
-
-.passage-text {
-  @include text-view($text-color, $passage-color);
-}
-
 // Placeholder text.
 div:empty:before {
   content: "Click to edit.";
@@ -201,190 +94,6 @@ div:empty:before {
   color: darken($passage-color, 20%);
   font-weight: 100;
   letter-spacing: 1px;
-}
-
-.wmd-panel {
-  background-color: $passage-color;
-
-  box-shadow: 0 $shadow $shadow-blur rgba( 0, 0, 0, 0.25 );
-  padding: $spacing;
-  position: absolute;
-  top: 200px;
-  left: 300px;
-  width: 375px;
-
-  .wmd-button-bar {
-    width: 100%;
-    color: $passage-color;
-
-    font-family: Georgia, serif;
-    font-weight: 100;
-    font-size: 8pt;
-
-    text-align: center;
-    vertical-align: middle;
-    line-height: 16pt;
-  }
-
-  .wmd-button {
-    width: $button-size;
-    height: $button-size;
-    padding: 1px 2px;
-    position: absolute;
-    display: inline-block;
-    list-style: none;
-
-    background-color: $text-color;
-    border-radius: 3px;
-
-    @include transition(background-color ease-out 0.1s);
-
-    &:hover {
-      color: $text-color;
-      background-color: $passage-color;
-      border: 1px solid transparentize($text-color, 0.5);
-      width: $button-size - 2px;
-      height: $button-size - 2px;
-    }
-
-    &:active {
-      color: $passage-color;
-      background-color: $text-color;
-    }
-  }
-
-  #wmd-bold-button:before {
-    content: "B";
-    font-weight: bold;
-  }
-
-  #wmd-italic-button:before {
-    content: "I";
-    font-style: italic;
-  }
-
-  #wmd-link-button:before {
-    content: "url";
-    font-family: $monospace;
-    font-size: 6pt;
-  }
-
-  #wmd-quote-button:before {
-    content: "\201c\201d";
-  }
-
-  #wmd-code-button:before {
-    content: "{}";
-    font-family: $monospace;
-  }
-
-  #wmd-image-button:before {
-    content: "\25a2";
-  }
-
-  #wmd-olist-button:before {
-    content: "1";
-  }
-
-  #wmd-ulist-button:before {
-    content: "\00b7";
-  }
-
-  #wmd-heading-button:before {
-    content: "H";
-    font-weight: bold;
-  }
-
-  #wmd-hr-button:before {
-    content: "—";
-  }
-
-  #wmd-undo-button:before {
-    content: "\27f2";
-    font-size: 10pt;
-  }
-
-  #wmd-redo-button:before {
-    content: "\27f3";
-    font-size: 10pt;
-  }
-
-  .wmd-button-row {
-    position: relative;
-    height: $button-size;
-
-    margin: {
-      top: 10px;
-      right: 5px;
-      bottom: 5px;
-    }
-    padding: 0;
-  }
-
-  .wmd-spacer {
-    width: 1px;
-    height: $button-size;
-
-    position: absolute;
-    display: inline-block;
-
-    list-style: none;
-  }
-
-  .wmd-input {
-    @include text-view($text-color, $passage-color);
-    @include calc(width, $spacing);
-    height: 120px;
-
-    &:focus {
-      background-color: darken($passage-color, 5%);
-      outline: none;
-    }
-  }
-
-  .wmd-preview {
-    font-weight: normal;
-  }
-
-  .preview-title {
-    font-family: $serif;
-    font-weight: bold;
-  }
-}
-
-.wmd-prompt-background {
-  background-color: black;
-  opacity: 0.1;
-}
-
-.wmd-prompt-dialog {
-  background-color: $passage-color;
-  box-shadow: 0 $shadow $shadow-blur rgba( 0, 0, 0, 0.25 );
-
-  font-family: $serif;
-  padding: $spacing;
-  border-radius: $radius;
-
-  input[type=text] {
-    font-family: $monospace;
-  }
-
-  input[type=button] {
-    font-family: $sans-serif;
-    color: white;
-    background-color: #1abc9c;
-
-    border: 0;
-    border-radius: $radius;
-
-    padding: $radius;
-
-    @include transition(0.2s ease-in-out background-color);
-
-    &:hover {
-      background-color: #16a085;
-    }
-  }
 }
 
 .selected {}

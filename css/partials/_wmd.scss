@@ -1,0 +1,184 @@
+.wmd-panel {
+  background-color: $passage-color;
+
+  box-shadow: 0 $shadow $shadow-blur rgba( 0, 0, 0, 0.25 );
+  padding: $spacing;
+  position: absolute;
+  top: 200px;
+  left: 300px;
+  width: 375px;
+
+  .wmd-button-bar {
+    width: 100%;
+    color: $passage-color;
+
+    font-family: $button-serif;
+    font-weight: 100;
+    font-size: 8pt;
+
+    text-align: center;
+    vertical-align: middle;
+    line-height: 16pt;
+  }
+
+  .wmd-button {
+    width: $button-size;
+    height: $button-size;
+    padding: 1px 2px;
+    position: absolute;
+    display: inline-block;
+    list-style: none;
+
+    background-color: $text-color;
+    border-radius: 3px;
+
+    @include transition(background-color ease-out 0.1s);
+
+    &:hover {
+      color: $text-color;
+      background-color: $passage-color;
+      border: 1px solid transparentize($text-color, 0.5);
+      width: $button-size - 2px;
+      height: $button-size - 2px;
+    }
+
+    &:active {
+      color: $passage-color;
+      background-color: $text-color;
+    }
+  }
+
+  #wmd-bold-button:before {
+    content: "B";
+    font-weight: bold;
+  }
+
+  #wmd-italic-button:before {
+    content: "I";
+    font-style: italic;
+  }
+
+  #wmd-link-button:before {
+    content: "url";
+    font-family: $monospace;
+    font-size: 6pt;
+  }
+
+  #wmd-quote-button:before {
+    content: "\201c\201d";
+  }
+
+  #wmd-code-button:before {
+    content: "{}";
+    font-family: $monospace;
+  }
+
+  #wmd-image-button:before {
+    content: "\25a2";
+  }
+
+  #wmd-olist-button:before {
+    content: "1";
+  }
+
+  #wmd-ulist-button:before {
+    content: "\00b7";
+  }
+
+  #wmd-heading-button:before {
+    content: "H";
+    font-weight: bold;
+  }
+
+  #wmd-hr-button:before {
+    content: "—";
+  }
+
+  #wmd-undo-button:before {
+    content: "\27f2";
+    font-size: 10pt;
+  }
+
+  #wmd-redo-button:before {
+    content: "\27f3";
+    font-size: 10pt;
+  }
+
+  .wmd-button-row {
+    position: relative;
+    height: $button-size;
+
+    margin: {
+      top: 10px;
+      right: 5px;
+      bottom: 5px;
+    }
+    padding: 0;
+  }
+
+  .wmd-spacer {
+    width: 1px;
+    height: $button-size;
+
+    position: absolute;
+    display: inline-block;
+
+    list-style: none;
+  }
+
+  .wmd-input {
+    @include text-view($text-color, $passage-color);
+    @include calc(width, $spacing);
+    height: $width;
+
+    &:focus {
+      background-color: darken($passage-color, 5%);
+      outline: none;
+    }
+  }
+
+  .wmd-preview {
+    font-weight: normal;
+  }
+
+  .preview-title {
+    font-family: $serif;
+    font-weight: bold;
+  }
+}
+
+.wmd-prompt-background {
+  padding: $radius 0;
+  background-color: black;
+  opacity: 0.1;
+}
+
+.wmd-prompt-dialog {
+  background-color: $passage-color;
+  box-shadow: 0 $shadow $shadow-blur rgba( 0, 0, 0, 0.25 );
+
+  font-family: $serif;
+  padding: $spacing;
+  border-radius: $radius;
+
+  input[type=text] {
+    font-family: $monospace;
+  }
+
+  input[type=button] {
+    font-family: $sans-serif;
+    color: white;
+    background-color: #1abc9c;
+
+    border: 0;
+    border-radius: $radius;
+
+    padding: $radius;
+
+    @include transition(0.2s ease-in-out background-color);
+
+    &:hover {
+      background-color: #16a085;
+    }
+  }
+}
