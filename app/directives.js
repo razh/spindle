@@ -24,8 +24,8 @@ app.directive( 'draggable', function( $document ) {
       });
 
       function mousemove( event ) {
-        y = event.screenY - startY;
-        x = event.screenX - startX;
+        y = Math.max( 0, event.screenY - startY );
+        x = Math.max( 0, event.screenX - startX );
         element.css({
           top:  y + 'px',
           left: x + 'px'

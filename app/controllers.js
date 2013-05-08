@@ -46,8 +46,10 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
       angle -= Math.PI * 0.125;
     };
 
+    var removedPassages = [];
     $scope.removePassage = function( index ) {
-      $scope.passages.splice( index, 1 );
+      removedPassages.push( $scope.passages.splice( index, 1 ) );
+      console.log( removedPassages[ removedPassages.length - 1 ] );
     };
 
     var visibility = [];

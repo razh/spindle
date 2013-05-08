@@ -11,12 +11,11 @@
     line-height: 7pt;
     vertical-align: middle;
     color: #ecf0f1;
-    float: right;
-    border-radius: 2.5px; }
+    float: right; }
 
 .index-body {
   background-color: #ecf0f1;
-  border-bottom-right-radius: 10px; }
+  box-shadow: 2.5px 2.5px 10px rgba(0, 0, 0, 0.25); }
   .index-body .title {
     overflow: scroll;
     padding: 10px;
@@ -39,7 +38,7 @@ footer {
   right: 0;
   top: 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
-  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
+  text-shadow: 2.5px 2.5px 0 rgba(0, 0, 0, 0.25);
   -webkit-transition: 0.1s ease-out all;
   -khtml-transition: 0.1s ease-out all;
   -moz-transition: 0.1s ease-out all;
@@ -47,7 +46,7 @@ footer {
   -o-transition: 0.1s ease-out all;
   transition: 0.1s ease-out all; }
   footer:hover {
-    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1), 0 0 2px white; }
+    text-shadow: 2.5px 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 2px white; }
 
 .passage {
   width: 120px;
@@ -216,7 +215,7 @@ footer {
 
 .wmd-prompt-dialog {
   background-color: #ecf0f1;
-  box-shadow: 0 2.5px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 2.5px 2.5px 10px rgba(0, 0, 0, 0.25);
   font-family: "adelle", Georgia, serif;
   padding: 20px;
   border-radius: 10px; }

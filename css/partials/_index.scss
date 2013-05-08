@@ -16,14 +16,12 @@
 
     color: $passage-color;
     float: right;
-
-    border-radius: 0.25 * $radius;
   }
 }
 
 .index-body {
   background-color: $passage-color;
-  border-bottom-right-radius: $radius;
+  box-shadow: $shadow $shadow $shadow-blur $shadow-color;
 
   .title {
     overflow: scroll;
