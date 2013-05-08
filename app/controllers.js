@@ -58,4 +58,13 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
     $scope.isPassageVisible = function( index ) {
       return visibility[ index ] || false;
     };
+
+    var editing = [];
+    $scope.togglePassageEditing = function( index ) {
+      editing[ index ] = !editing[ index ] || false;
+    };
+
+    $scope.isEditing = function( index ) {
+      return editing[ index ] || false;
+    };
   }]);

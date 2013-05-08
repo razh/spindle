@@ -62,12 +62,10 @@ footer {
     font-size: 9pt;
     font-family: Monaco, "Lucida Console", monospace; }
   .passage .passage-controls {
-    border-left: 1px solid #aaa;
     position: absolute;
-    right: 20px;
+    right: 30px;
     top: 10px;
     width: 20px;
-    margin-top: 10px;
     margin-right: -10px; }
 
 .passage-enter-setup,
@@ -100,7 +98,8 @@ footer {
     background-color: #ecf0f1;
     resize: none;
     border: 0;
-    font-weight: bold; }
+    font-weight: bold;
+    padding: 0; }
 
 .passage-text {
   padding: 10px;
@@ -125,7 +124,6 @@ footer {
   height: 20px;
   padding: 1px 2px;
   position: absolute;
-  display: inline-block;
   list-style: none;
   background-color: #2c3e50;
   border-radius: 3px;
@@ -145,36 +143,36 @@ footer {
   .wmd-panel .wmd-button:active {
     color: #ecf0f1;
     background-color: #2c3e50; }
-.wmd-panel #wmd-bold-button:before {
+.wmd-panel .wmd-bold-button:before {
   content: "B";
   font-weight: bold; }
-.wmd-panel #wmd-italic-button:before {
+.wmd-panel .wmd-italic-button:before {
   content: "I";
   font-style: italic; }
-.wmd-panel #wmd-link-button:before {
+.wmd-panel .wmd-link-button:before {
   content: "url";
   font-family: Monaco, "Lucida Console", monospace;
   font-size: 6pt; }
-.wmd-panel #wmd-quote-button:before {
+.wmd-panel .wmd-quote-button:before {
   content: "\201c\201d"; }
-.wmd-panel #wmd-code-button:before {
+.wmd-panel .wmd-code-button:before {
   content: "{}";
   font-family: Monaco, "Lucida Console", monospace; }
-.wmd-panel #wmd-image-button:before {
+.wmd-panel .wmd-image-button:before {
   content: "\25a2"; }
-.wmd-panel #wmd-olist-button:before {
+.wmd-panel .wmd-olist-button:before {
   content: "1"; }
-.wmd-panel #wmd-ulist-button:before {
+.wmd-panel .wmd-ulist-button:before {
   content: "\00b7"; }
-.wmd-panel #wmd-heading-button:before {
+.wmd-panel .wmd-heading-button:before {
   content: "H";
   font-weight: bold; }
-.wmd-panel #wmd-hr-button:before {
+.wmd-panel .wmd-hr-button:before {
   content: "—"; }
-.wmd-panel #wmd-undo-button:before {
+.wmd-panel .wmd-undo-button:before {
   content: "\27f2";
   font-size: 10pt; }
-.wmd-panel #wmd-redo-button:before {
+.wmd-panel .wmd-redo-button:before {
   content: "\27f3";
   font-size: 10pt; }
 .wmd-panel .wmd-button-row {
@@ -271,7 +269,7 @@ button {
     opacity: 1.0; }
 
 .resizable {
-  resize: both;
+  resize: horizontal;
   overflow: auto; }
 
 div:focus,

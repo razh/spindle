@@ -18,12 +18,11 @@
   }
 
   .passage-controls {
-    border-left: 1px solid #aaa;
+    // border-left: 1px solid #aaa;
     position: absolute;
-    right: $spacing;
+    right: $spacing + 0.5 * $controls-width;
     top: $radius;
     width: $controls-width;
-    margin-top: $radius;
     margin-right: -$radius;
   }
 }
@@ -50,6 +49,7 @@
   .passage-title {
     @include text-view($title-color, $passage-color);
     font-weight: bold;
+    padding: 0;
   }
 }
 

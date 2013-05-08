@@ -37,10 +37,10 @@
             <hr>
 
             <div editor class="wmd-panel">
-              <div class="wmd-button-bar" id="wmd-button-bar"></div>
-              <textarea markdown-input class="wmd-input" id="wmd-input" ng-model=passage.text></textarea>
-              <div class="preview-title">Preview</div>
-              <div class="wmd-preview" id="wmd-preview"></div>
+              <div class="wmd-button-bar" id="wmd-button-bar" ng-show="isEditing($index)"></div>
+              <textarea input class="wmd-input" id="wmd-input" ng-model=passage.text ng-show="isEditing($index)"></textarea>
+              <div class="preview-title" ng-show="isEditing($index)">Preview</div>
+              <div class="wmd-preview" id="wmd-preview" ng-click="togglePassageEditing($index)"></div>
             </div>
 
           </div>

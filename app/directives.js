@@ -53,6 +53,16 @@ app.directive( 'draggable', function( $document ) {
 
       var editor = new Markdown.Editor( converter, '-' + scope.$index );
       editor.run();
+
+      // Add classes to the various buttons.
+      var buttons = element.children()[0].childNodes[0].childNodes;
+      angular.forEach( buttons, function( child ) {
+        // Very hacky. We copy over the id attribute without the id number.
+        var matches = child.id.match( /wmd-[a-z]*-button/ );
+        if ( matches ) {
+          child.className += ' ' + matches[0];
+        }
+      });
     };
   })
   .directive( 'resizable', function() {
@@ -193,7 +203,7 @@ app.directive( 'draggable', function( $document ) {
       }
     };
   })
-  .directive( 'markdownInput', function() {
+  .directive( 'input', function() {
     return function( scope, element, attrs ) {
       element.bind( 'mousedown', function( event ) {
         event.stopPropagation();
