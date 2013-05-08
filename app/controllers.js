@@ -29,8 +29,6 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
       }
     ];
 
-    console.log( $scope.passages[0] );
-
     var angle = 0;
     $scope.addPassage = function() {
       var halfWidth = 0.5 * window.innerWidth,
@@ -52,6 +50,7 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
       console.log( removedPassages[ removedPassages.length - 1 ] );
     };
 
+
     var visibility = [];
     $scope.togglePassageVisibility = function( index ) {
       visibility[ index ] = !visibility[ index ] || false;
@@ -60,6 +59,7 @@ app.controller( 'SpindleCtrl', [ '$scope', function( $scope ) {
     $scope.isPassageVisible = function( index ) {
       return visibility[ index ] || false;
     };
+
 
     var editing = [];
     $scope.togglePassageEditing = function( index ) {
