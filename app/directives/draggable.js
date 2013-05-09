@@ -1,3 +1,4 @@
+// Adapted from code taken from: http://docs.angularjs.org/guide/compiler.
 app.directive( 'draggable', function( $document ) {
   return function( scope, element, attrs ) {
     var startX = attrs.x || 0,
